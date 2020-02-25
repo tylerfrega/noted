@@ -1,0 +1,23 @@
+  const stub = [
+    {
+      title: 'Learn React',
+      completed: false
+    },
+    {
+      title: '???',
+      completed: false
+    },
+    {
+      title: 'Profit',
+      completed: true
+    }
+  ]
+
+
+    // axios({
+  //   method: 'get',
+  //   url: '/api/getTasks',
+  // }).then(res => {
+  //   console.log(res.data.data)
+  // })
+  
