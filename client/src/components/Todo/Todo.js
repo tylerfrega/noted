@@ -8,6 +8,22 @@ const Todo = () => {
     const [tasks, setTasks] = useState([])
     const [showCompleted, setCompleted] = useState(false)
 
+    useEffect(() => { fetchTask() }, [])
+    // useEffect(() => { saveTask() }, [])
+
+    const saveTask = async (title) => {
+        const task = {
+            title: title,
+            completed: false
+        }
+        const result = await axios({
+            method: 'post',
+            url: '/api/addTask',
+            data: task
+        })
+        fetchTask()
+    }
+
     const fetchTask = async () => {
         const result = await axios({
             method: 'get',
@@ -16,26 +32,24 @@ const Todo = () => {
         setTasks(result.data.data)
     }
 
-    useEffect(() => { fetchTask() }, [])
+    // const addTask = title => {
+    //     const task = {
+    //         title: title,
+    //         completed: false
+    //     }
+    //     const newTasks = [...tasks, { title, completed: false }]
+    //     setTasks(newTasks)
 
-    const addTask = title => {
-        const task = {
-            title: title,
-            completed: false
-        }
-        const newTasks = [...tasks, { title, completed: false }]
-        setTasks(newTasks)
-
-        const saveTask = async () => {
-            const result = await axios({
-                method: 'post',
-                url: '/api/addTask',
-                data: task
-            })
-            setTasks(result.data.data)
-        }
-        saveTask()
-    }
+    //     const saveTask = async () => {
+    //         const result = await axios({
+    //             method: 'post',
+    //             url: '/api/addTask',
+    //             data: task
+    //         })
+    //         setTasks(result.data.data)
+    //     }
+    //     saveTask()
+    // }
 
     const completeTask = index => {
         const newTasks = [...tasks]
@@ -57,13 +71,13 @@ const Todo = () => {
 
     const showCreateTask = () => {
         if (!showCompleted) {
-            return <CreateTask addTask={addTask} />
+            return <CreateTask saveTask={saveTask} />
         }
     }
 
     return (
         <div className='todo-container paper'>
-            <div className='header'>React Hooks for Fun and Profit</div>
+            <div className='header'>Noted...</div>
             <div className='tasks'>
 
                 <div className="task-headers">
