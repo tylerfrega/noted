@@ -8,6 +8,7 @@ const Todo = () => {
     const [tasks, setTasks] = useState([])
     const [showCompleted, setCompleted] = useState(false)
 
+    //effects must explictly declare dependencies. any external variable you use in this function must be declared. In this case, none
     useEffect(() => { fetchTask() }, [])
 
     const saveTask = async (title) => {
@@ -74,7 +75,7 @@ const Todo = () => {
                                         removeTask={removeTask}
                                     />
                                 ) : (
-                                        ''
+                                        null
                                     )
                             )}
                         </ul>
@@ -91,7 +92,7 @@ const Todo = () => {
                                         removeTask={removeTask}
                                     />
                                 ) : (
-                                        ''
+                                        null
                                     )
                             )}
                         </ul>

@@ -1,14 +1,13 @@
-import React, { useState } from 'React'
-import Breakfast from './Breakfast' // I utilize breakfast foods as my foo/bar/biz/baz
+import React, { useState } from './node_modules/React'
 
-const DataLoader = () => {
+const DataLoader = (Component) => {
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState([])
 
     useEffect(() => {
         async function fetchData() {
             setIsLoading(true)
-            const fetcher = await window.fetch(/some/deinnopt)
+            const fetcher = await window.fetch('/some/deinnopt')
             const response = await fetcher.json()
             setData(response)
             setIsLoading(false)
@@ -16,7 +15,7 @@ const DataLoader = () => {
         fetchData()
     }, [])
 
-    return isLoading ? <div>Loading</div> : <Breakfast data={data} />
+    return isLoading ? <div>Loading</div> : <Component data={data} />
 }
 
 export default DataLoader

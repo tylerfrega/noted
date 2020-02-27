@@ -2,8 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Task = require('../models/models')
 
-// this is our get method
-// this method fetches all available data in our database
 router.get('/getTasks', (req, res) => {
   Task.find((err, data) => {
     if (err) return res.json({ success: false, error: err })
@@ -11,8 +9,6 @@ router.get('/getTasks', (req, res) => {
   })
 })
 
-// this is our update method
-// this method overwrites existing data in our database
 router.post('/updateData', (req, res) => {
   const { id, update } = req.body
   Data.findByIdAndUpdate(id, update, err => {
@@ -32,8 +28,6 @@ router.post('/addTask', (req, res) => {
     })
 })
 
-// this is our delete method
-// this method removes existing data in our database
 router.delete('/deleteTask', (req, res) => {
   const { id } = req.body
   Data.findByIdAndRemove(id, err => {
@@ -42,8 +36,6 @@ router.delete('/deleteTask', (req, res) => {
   })
 })
 
-// this is our create methid
-// this method adds new data in our database
 router.post('/addTask', (req, res) => {
   let data = new Data()
 

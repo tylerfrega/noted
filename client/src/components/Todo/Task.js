@@ -1,6 +1,6 @@
 import React from 'react'
-import complete from '../assets/images/complete.svg'
-import incomplete from '../assets/images/incomplete.svg'
+import complete from '../../assets/images/complete.svg'
+import incomplete from '../../assets/images/incomplete.svg'
 
 const Task = ({
     task,
