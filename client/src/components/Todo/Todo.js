@@ -9,7 +9,6 @@ const Todo = () => {
     const [showCompleted, setCompleted] = useState(false)
 
     useEffect(() => { fetchTask() }, [])
-    // useEffect(() => { saveTask() }, [])
 
     const saveTask = async (title) => {
         const task = {
@@ -32,25 +31,6 @@ const Todo = () => {
         setTasks(result.data.data)
     }
 
-    // const addTask = title => {
-    //     const task = {
-    //         title: title,
-    //         completed: false
-    //     }
-    //     const newTasks = [...tasks, { title, completed: false }]
-    //     setTasks(newTasks)
-
-    //     const saveTask = async () => {
-    //         const result = await axios({
-    //             method: 'post',
-    //             url: '/api/addTask',
-    //             data: task
-    //         })
-    //         setTasks(result.data.data)
-    //     }
-    //     saveTask()
-    // }
-
     const completeTask = index => {
         const newTasks = [...tasks]
         newTasks[index].completed
@@ -65,10 +45,6 @@ const Todo = () => {
         setTasks([...newTasks])
     }
 
-    const toggleShowCompleted = (bol) => {
-        setCompleted(bol)
-    }
-
     const showCreateTask = () => {
         if (!showCompleted) {
             return <CreateTask saveTask={saveTask} />
@@ -81,8 +57,8 @@ const Todo = () => {
             <div className='tasks'>
 
                 <div className="task-headers">
-                    <h3 className={`task-header ${!showCompleted ? 'active' : ''}`} onClick={() => toggleShowCompleted(false)}>Todo</h3>
-                    <h3 className={`task-header ${showCompleted ? 'active' : ''}`} onClick={() => toggleShowCompleted(true)}>Complete</h3>
+                    <h3 className={`task-header ${!showCompleted ? 'active' : ''}`} onClick={() => setCompleted(!showCompleted)}>Todo</h3>
+                    <h3 className={`task-header ${showCompleted ? 'active' : ''}`} onClick={() => setCompleted(!showCompleted)}>Complete</h3>
                 </div>
                 {
                     !showCompleted ?

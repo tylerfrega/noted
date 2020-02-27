@@ -26,15 +26,3 @@ const CreateTask = ({ saveTask }) => {
 }
 
 export default CreateTask
-
-
-
-    //revert back to add task to fix build!!!!!!!!!!
-    // const addTask = async (task) => {
-    //     const result = await axios({
-    //         method: 'post',
-    //         url: '/api/addTask',
-    //         data: task
-    //     })
-    //     setTasks(result.data.data)
-    // }

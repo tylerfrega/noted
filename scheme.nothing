@@ -21,3 +21,22 @@
   //   console.log(res.data.data)
   // })
   
+
+      // const addTask = title => {
+    //     const task = {
+    //         title: title,
+    //         completed: false
+    //     }
+    //     const newTasks = [...tasks, { title, completed: false }]
+    //     setTasks(newTasks)
+
+    //     const saveTask = async () => {
+    //         const result = await axios({
+    //             method: 'post',
+    //             url: '/api/addTask',
+    //             data: task
+    //         })
+    //         setTasks(result.data.data)
+    //     }
+    //     saveTask()
+    // }
