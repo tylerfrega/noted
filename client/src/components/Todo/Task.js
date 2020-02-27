@@ -6,19 +6,13 @@ const Task = ({
     task,
     index,
     completeTask,
-    handleDragStart,
-    handleDragOver,
-    handleDrop
+    _id
 }) => {
     return (
         <li
             className='task'
-            id={index}
+            id={_id}
             style={{ textDecoration: task.completed ? 'line-through' : '' }}
-            draggable
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
         >
             {task.title}
             <button onClick={() => completeTask(index)}>

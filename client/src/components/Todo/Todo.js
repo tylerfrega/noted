@@ -11,6 +11,15 @@ const Todo = () => {
     //effects must explictly declare dependencies. any external variable you use in this function must be declared. In this case, none
     useEffect(() => { fetchTask() }, [])
 
+    const fetchTask = async () => {
+        const result = await axios({
+            method: 'get',
+            url: '/api/getTasks',
+        })
+        console.log(result)
+        setTasks(result.data.data)
+    }
+
     const saveTask = async (title) => {
         const task = {
             title: title,
@@ -24,19 +33,20 @@ const Todo = () => {
         fetchTask()
     }
 
-    const fetchTask = async () => {
+    const updateTask = async (task) => {
         const result = await axios({
-            method: 'get',
-            url: '/api/getTasks'
+            method: 'post',
+            url: '/api/updateTask',
+            data: task
         })
-        setTasks(result.data.data)
     }
 
     const completeTask = index => {
         const newTasks = [...tasks]
-        newTasks[index].completed
-            ? (newTasks[index].completed = false)
-            : (newTasks[index].completed = true)
+        newTasks[index].completed = !newTasks[index].completed
+        console.log(newTasks[index])
+
+        updateTask(newTasks[index], newTasks[index].id)
         setTasks(newTasks)
     }
 
@@ -70,7 +80,7 @@ const Todo = () => {
                                     <Task
                                         task={task}
                                         index={index}
-                                        key={index}
+                                        key={task._id}
                                         completeTask={completeTask}
                                         removeTask={removeTask}
                                     />
@@ -87,7 +97,7 @@ const Todo = () => {
                                     <Task
                                         task={task}
                                         index={index}
-                                        key={index}
+                                        key={task._id}
                                         completeTask={completeTask}
                                         removeTask={removeTask}
                                     />
