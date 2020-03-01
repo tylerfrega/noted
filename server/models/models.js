@@ -5,6 +5,8 @@ const Schema = mongoose.Schema
 const TaskSchema = new Schema(
   {
     title: String,
+    details: String,
+    tasks: Array,
     completed: Boolean
   },
   { timestamps: true }

@@ -4,7 +4,7 @@ var cors = require('cors')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const router = require('./server/routes/routes')
-const API_PORT = 3005
+const API_PORT = 8080
 const app = express()
 const URI = require('./server/keys').URI
 app.use(cors())

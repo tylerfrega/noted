@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './Todo.scss'
 import axios from 'axios'
-import CreateTask from './CreateTask'
 import Task from './Task'
+import createTaskImg from '../../assets/images/createTask.png'
+
 
 const Todo = () => {
     const [tasks, setTasks] = useState([])
@@ -16,21 +18,7 @@ const Todo = () => {
             method: 'get',
             url: '/api/getTasks',
         })
-        console.log(result)
         setTasks(result.data.data)
-    }
-
-    const saveTask = async (title) => {
-        const task = {
-            title: title,
-            completed: false
-        }
-        const result = await axios({
-            method: 'post',
-            url: '/api/addTask',
-            data: task
-        })
-        fetchTask()
     }
 
     const updateTask = async (task) => {
@@ -43,30 +31,31 @@ const Todo = () => {
 
     const completeTask = index => {
         const newTasks = [...tasks]
-        newTasks[index].completed = !newTasks[index].completed
-        console.log(newTasks[index])
 
+        newTasks[index].completed = !newTasks[index].completed
         updateTask(newTasks[index], newTasks[index].id)
         setTasks(newTasks)
     }
 
     const removeTask = index => {
         const newTasks = [...tasks]
+
         newTasks.splice(index, 1)
         setTasks([...newTasks])
     }
 
     const showCreateTask = () => {
         if (!showCompleted) {
-            return <CreateTask saveTask={saveTask} />
+            return <Link to='/create' className="create-task-btn">
+                        <img src={createTaskImg} alt='boo' style={{ height: "25px", marginRight: "8px" }} />
+                        Create a new Notebook...
+                    </Link>
         }
     }
 
     return (
-        <div className='todo-container paper'>
-            <div className='header'>Noted...</div>
+        <div>
             <div className='tasks'>
-
                 <div className="task-headers">
                     <h3 className={`task-header ${!showCompleted ? 'active' : ''}`} onClick={() => setCompleted(!showCompleted)}>Todo</h3>
                     <h3 className={`task-header ${showCompleted ? 'active' : ''}`} onClick={() => setCompleted(!showCompleted)}>Complete</h3>
