@@ -5,12 +5,13 @@ import axios from 'axios'
 import Task from './Task'
 import createTaskImg from '../../assets/images/createTask.png'
 
-
 const Todo = () => {
     const [tasks, setTasks] = useState([])
     const [showCompleted, setCompleted] = useState(false)
 
-    //effects must explictly declare dependencies. any external variable you use in this function must be declared. In this case, none
+    //effects must explictly declare dependencies. 
+    //any external variable you use in this function must be declared. 
+    //In this case, none
     useEffect(() => { fetchTask() }, [])
 
     const fetchTask = async () => {

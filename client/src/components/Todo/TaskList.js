@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import './Todo.scss'
-import axios from 'axios'
 import Task from './Task'
-import createTaskImg from '../../assets/images/createTask.png'
 
 
 const TaskList = () => {
-    const [tasks, setTask] = useState([])
+    const [tasks, setTasks] = useState([])
     const [value, setValue] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault()
         if (!value) return
 
-        setValue(value)
-        setTask('')
+        addTask(value)
+        setValue('')
+    }
+
+    const addTask = title => {
+        const newTasks = [...tasks, { title, completed: false }]
+        setTasks(newTasks)
     }
 
     return (
@@ -30,7 +32,7 @@ const TaskList = () => {
                             (<Task
                                 task={task}
                                 index={index}
-                                key={task._id}
+                                key={index}
                             // completeTask={completeTask}
                             // removeTask={removeTask}
                             />)
