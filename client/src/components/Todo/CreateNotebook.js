@@ -15,7 +15,6 @@ const CreateNotebook = () => {
             tasks : [{title: 'test'}]
         }
 
-        console.log(notebook)
         const result = await axios({
             method: 'post',
             url: '/api/saveNotebook',

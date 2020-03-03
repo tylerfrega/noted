@@ -14,7 +14,7 @@ router.post('/saveNotebook', (req, res) => {
 
     notebook = new Notebook()
     notebook.title = title
-    notebook.noets = notes
+    notebook.notes = notes
     notebook.tasks = tasks
     console.log(notebook)
 

@@ -5,6 +5,7 @@ const NotebookSchema = new Schema(
   {
     title: String,
     details: String,
+    notes: String,
     tasks: [{
       title: String,
       completed: Boolean,
