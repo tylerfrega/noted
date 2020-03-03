@@ -45,7 +45,7 @@ const Todo = () => {
         setTasks([...newTasks])
     }
 
-    const showCreateTask = () => {
+    const showCreateNotebook = () => {
         if (!showCompleted) {
             return <Link to='/create' className="create-task-btn">
                         <img src={createTaskImg} alt='boo' style={{ height: "25px", marginRight: "8px" }} />
@@ -98,7 +98,7 @@ const Todo = () => {
                         </ul>
                 }
             </div>
-            {showCreateTask()}
+            {showCreateNotebook()}
         </div>
     )
 }

@@ -42,8 +42,8 @@ li {
         margin: 0px 5px;
         padding: 3px 5px;
         border: none;
+        font-size: 1.2em;
         cursor: pointer;
-        color: white;
         float: right;
     }
 }
@@ -116,8 +116,10 @@ li {
         border-top: none;
         min-height: 68px;
         padding-top: 24px;
+        font-size: .8em;
 
         &::placeholder {
+            font-size: 1.2em;
         }
 
     }

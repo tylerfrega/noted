@@ -20,6 +20,14 @@ const TaskList = () => {
         setTasks(newTasks)
     }
 
+    const removeTask = index => {
+        const newTasks = [...tasks]
+
+        newTasks.splice(index, 1)
+        setTasks([...newTasks])
+    }
+
+
     return (
         <div>
             <div className='tasks'>
@@ -33,8 +41,7 @@ const TaskList = () => {
                                 task={task}
                                 index={index}
                                 key={index}
-                            // completeTask={completeTask}
-                            // removeTask={removeTask}
+                                removeTask={removeTask}
                             />)
                         )}
                     </ul>

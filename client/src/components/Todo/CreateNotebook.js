@@ -2,37 +2,41 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import TaskList from './TaskList'
 
-const CreateTask = () => {
+const CreateNotebook = () => {
     const [task, setTask] = useState('')
     const [title, setTitle] = useState('')
-    const [details, setDetails] = useState('')
+    const [notes, setNotes] = useState('')
 
-    const handleSubmit = e => {
+    const handleSubmit =  async (title, notes, tasks) => {
+        const notebook = {
+            title,
+            completed: false,
+            notes,
+            tasks
+        }
+        const result = await axios({
+            method: 'post',
+            url: '/api/saveNotebook',
+            data: notebook
+        })
+    }
+
+    const saveTask = (e, title) => {
         e.preventDefault()
-        if (!title && !details) return
-        const  task  = {title, details}
+        if (!title) return
+
+        const task = {
+            title,
+            completed: false,
+        }
 
         saveTask(task)
         setTask('')
     }
 
-    const saveTask = async (title) => {
-        const task = {
-            title: title,
-            completed: false
-        }
-        const result = await axios({
-            method: 'post',
-            url: '/api/addTask',
-            data: task
-        })
-        // fetchTask()
-    }
-
     return (
         <div className='create-task'>
-            <form onSubmit={handleSubmit}>
-                <label>Title</label>
+            <form onSubmit={saveTask}>
                 <input
                     type='text'
                     className='input'
@@ -42,8 +46,8 @@ const CreateTask = () => {
                 />
                 <textarea
                     value={task.details}
-                    placeholder='Details'
-                    onChange={e => setDetails(e.target.value)}
+                    placeholder='Notes'
+                    onChange={e => setNotes(e.target.value)}
                 >
                 </textarea>
             </form>
@@ -52,4 +56,4 @@ const CreateTask = () => {
     )
 }
 
-export default CreateTask
+export default CreateNotebook
