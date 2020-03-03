@@ -17,7 +17,7 @@ const Todo = () => {
     const fetchTask = async () => {
         const result = await axios({
             method: 'get',
-            url: '/api/getTasks',
+            url: '/api/getNotebooks',
         })
         setTasks(result.data.data)
     }
@@ -36,13 +36,6 @@ const Todo = () => {
         newTasks[index].completed = !newTasks[index].completed
         updateTask(newTasks[index], newTasks[index].id)
         setTasks(newTasks)
-    }
-
-    const removeTask = index => {
-        const newTasks = [...tasks]
-
-        newTasks.splice(index, 1)
-        setTasks([...newTasks])
     }
 
     const showCreateNotebook = () => {
@@ -71,8 +64,7 @@ const Todo = () => {
                                         task={task}
                                         index={index}
                                         key={task._id}
-                                        completeTask={completeTask}
-                                        removeTask={removeTask}
+                                        showEdit={true}
                                     />
                                 ) : (
                                         null
@@ -88,8 +80,7 @@ const Todo = () => {
                                         task={task}
                                         index={index}
                                         key={task._id}
-                                        completeTask={completeTask}
-                                        removeTask={removeTask}
+                                        showEdit={true}
                                     />
                                 ) : (
                                         null

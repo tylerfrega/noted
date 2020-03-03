@@ -1,21 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const Task = require('../models/models')
+const Notebook = require('../models/models')
 
-router.get('/getTasks', (req, res) => {
-    Task.find((err, data) => {
+router.get('/getNotebooks', (req, res) => {
+    Notebook.find((err, data) => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true, data: data })
     })
 })
 
-router.post('/addTask', (req, res) => {
-    const { title, completed } = req.body
+router.post('/saveNotebook', (req, res) => {
+    const { title, notes, tasks } = req.body
 
-    task = new Task()
-    task.title = title
-    task.completed = completed
-    task.save(err => {
+    notebook = new Notebook()
+    notebook.title = title
+    notebook.noets = notes
+    notebook.tasks = tasks
+    console.log(notebook)
+
+
+    notebook.save(err => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true })
     })

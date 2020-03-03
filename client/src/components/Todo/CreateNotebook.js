@@ -7,13 +7,15 @@ const CreateNotebook = () => {
     const [title, setTitle] = useState('')
     const [notes, setNotes] = useState('')
 
-    const handleSubmit =  async (title, notes, tasks) => {
+    const handleSubmit =  async () => {
         const notebook = {
             title,
             completed: false,
             notes,
-            tasks
+            tasks : [{title: 'test'}]
         }
+
+        console.log(notebook)
         const result = await axios({
             method: 'post',
             url: '/api/saveNotebook',
@@ -52,6 +54,7 @@ const CreateNotebook = () => {
                 </textarea>
             </form>
             <TaskList />
+            <button onClick={() => handleSubmit()}>CLICK</button>
         </div>
     )
 }
