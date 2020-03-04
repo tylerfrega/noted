@@ -4,16 +4,15 @@ import incomplete from '../../assets/images/incomplete.svg'
 import edit from '../../assets/images/edit.png'
 import { Link } from 'react-router-dom'
 
-
 const Task = ({
     task,
     index,
     completeTask,
+    showCompleteTask,
     showEdit,
     removeTask,
     _id
 }) => {
-
     const showEditButton = (showEdit) => {
         if (showEdit) {
             return  <button>
@@ -25,7 +24,7 @@ const Task = ({
     }
 
     const showCompleteButton = () => {
-        if (completeTask) {
+        if (showCompleteTask) {
             return <button onClick={() => completeTask(index)}>
                         {task.completed ? (
                             <img src={complete} alt='boo' />) : (<img src={incomplete} alt='boo' />)}

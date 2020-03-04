@@ -1,6 +1,7 @@
 body {
     font-family: 'Indie Flower', cursive;
-    margin: 30px 0;
+    // margin: 30px 0;
+    overflow: hidden;
 }
 
 a, 
@@ -18,12 +19,23 @@ li {
     list-style: none;
 }
 
+button {
+    border-radius: 5px;
+    margin: 0px 5px;
+    padding: 3px 5px;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
 .todo-container {
     box-shadow: 10px 11px 41px -13px rgba(0, 0, 0, 0.66);
     width: 40vw;
     max-width: 800px;
     min-width: 300px;
-    margin: 10em auto;
+    margin: 5em auto;
     border-radius: 3px;
     padding: 20px 10px;
 }
@@ -34,16 +46,10 @@ li {
     font-size: 1.2em;
 
     &:last-of-type {
-        border-bottom: 1px solid rgb(60, 100, 230);
+        // border-bottom: 1px solid rgb(60, 100, 230);
     }
 
     button {
-        border-radius: 5px;
-        margin: 0px 5px;
-        padding: 3px 5px;
-        border: none;
-        font-size: 1.2em;
-        cursor: pointer;
         float: right;
     }
 }
@@ -73,16 +79,20 @@ li {
     height: 68px;
     margin:0;
     border-bottom: 1px solid rgb(60, 100, 230);
+    border-top: 1px solid rgb(60, 100, 230);
 
     img {
         margin-right: 24px;
-        margin-left: 18px;
+        margin-left: 16px;
 
     }
 }
 
-.create-task {
+.save-task-btn {
+    margin: 12px;
+}
 
+.create-task {
     label {
         margin: 12px;
     }
@@ -147,6 +157,7 @@ img {
     position: relative;
     border: 1px solid #B5B5B5;
     background-size: 100% 30px;
+    
 }
 
 /* .paper::before {content:""; z-index:-1; margin:0 1px; width:706px; height:10px; position:absolute; bottom:-3px; left:0; background:white; border:1px solid #B5B5B5;} */
@@ -158,4 +169,8 @@ img {
     left: 69px;
     bottom: 0;
     border-left: 3px solid #F8D3D3;
+}
+
+.notes {
+    margin: 12px;
 }

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import './Todo.scss'
 import Task from './Task'
 
-
-const TaskList = () => {
-    const [tasks, setTasks] = useState([])
+const TaskList = ({tasks}) => {
+    const [tasksList, setTasksList] = useState([])
     const [value, setValue] = useState('')
 
     const handleSubmit = e => {
@@ -17,14 +16,14 @@ const TaskList = () => {
 
     const addTask = title => {
         const newTasks = [...tasks, { title, completed: false }]
-        setTasks(newTasks)
+        setTasksList(newTasks)
     }
 
     const removeTask = index => {
         const newTasks = [...tasks]
 
         newTasks.splice(index, 1)
-        setTasks([...newTasks])
+        setTasksList([...newTasks])
     }
 
 
@@ -47,7 +46,7 @@ const TaskList = () => {
                     </ul>
                 }
                 <div className='create-task'>
-                    <form onSubmit={handleSubmit}>
+                    <form >
                         <input
                             type='text'
                             className='input'

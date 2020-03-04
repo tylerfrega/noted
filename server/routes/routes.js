@@ -16,8 +16,6 @@ router.post('/saveNotebook', (req, res) => {
     notebook.title = title
     notebook.notes = notes
     notebook.tasks = tasks
-    console.log(notebook)
-
 
     notebook.save(err => {
         if (err) return res.json({ success: false, error: err })
