@@ -30,10 +30,10 @@ const TaskList = () => {
 
     return (
         <div>
+            <div className="task-headers">
+                <h3 className={'task-header'} >Tasks</h3>
+            </div>
             <div className='tasks'>
-                <div className="task-headers">
-                    <h3 className={'task-header'} >Tasks</h3>
-                </div>
                 {
                     <ul>
                         {tasks.map((task, index) =>

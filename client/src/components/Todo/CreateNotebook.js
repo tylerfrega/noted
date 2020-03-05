@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import TaskList from './TaskList'
+import saveIcon from '../../assets/images/save.png'
 
 const CreateNotebook = () => {
     const [task, setTask] = useState('')
@@ -53,7 +54,8 @@ const CreateNotebook = () => {
                 </textarea>
             </form>
             <TaskList />
-            <button onClick={() => handleSubmit()}>CLICK</button>
+            <button onClick={() => handleSubmit()}><img src={saveIcon} alt={'turds'} />
+            </button>
         </div>
     )
 }

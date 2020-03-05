@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Todo from './components/Todo/Todo'
+import NoteBookList from './components/Todo/NotebookList'
 import Home from './components/Home'
 import Edit from './components/Todo/Edit'
 import CreateNotebook from './components/Todo/CreateNotebook'
@@ -18,7 +18,7 @@ function App() {
                 <div>
                     <Switch>
                         <Route path='/' component={Home} exact></Route>
-                        <Route path='/todo' component={Todo}></Route>
+                        <Route path='/todo' component={NoteBookList}></Route>
                         <Route path='/edit/:id' component={Edit}></Route>
                         <Route path='/create' component={CreateNotebook}></Route>
                     </Switch>

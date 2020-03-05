@@ -1,6 +1,7 @@
 body {
     font-family: 'Indie Flower', cursive;
-    margin: 30px 0;
+    // margin: 30px 0;
+    overflow: hidden;
 }
 
 a, 
@@ -23,7 +24,7 @@ li {
     width: 40vw;
     max-width: 800px;
     min-width: 300px;
-    margin: 10em auto;
+    margin: 5em auto;
     border-radius: 3px;
     padding: 20px 10px;
 }
@@ -34,7 +35,7 @@ li {
     font-size: 1.2em;
 
     &:last-of-type {
-        border-bottom: 1px solid rgb(60, 100, 230);
+        // border-bottom: 1px solid rgb(60, 100, 230);
     }
 
     button {
@@ -46,6 +47,19 @@ li {
         cursor: pointer;
         float: right;
     }
+}
+
+.notes {
+    margin: 12px;
+}
+
+button {
+    border-radius: 5px;
+    margin: 18px 0 0 18px; 
+    padding: 3px 5px;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
 }
 
 .task-headers {
@@ -73,12 +87,19 @@ li {
     height: 68px;
     margin:0;
     border-bottom: 1px solid rgb(60, 100, 230);
+    border-top: 1px solid rgb(60, 100, 230);
+
 
     img {
         margin-right: 24px;
         margin-left: 18px;
 
     }
+}
+
+.tasks {
+    max-height: 280px;
+    overflow: scroll;
 }
 
 .create-task {
