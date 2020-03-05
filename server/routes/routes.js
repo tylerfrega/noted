@@ -16,19 +16,17 @@ router.post('/saveNotebook', (req, res) => {
     notebook.title = title
     notebook.notes = notes
     notebook.tasks = tasks
-    console.log(notebook)
-
-
     notebook.save(err => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true })
     })
 })
 
-router.post('/updateTask', (req, res) => {
+router.post('/updateNotebook', (req, res) => {
     const { _id } = req.body
+    console.log(_id)
 
-    Task.findByIdAndUpdate(_id, req.body, err => {
+    Notebook.findByIdAndUpdate(_id, req.body, err => {
         if (err) return res.json({ success: false, error: err })
         return res.json({ success: true })
     })

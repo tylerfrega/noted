@@ -19,8 +19,8 @@ function App() {
                     <Switch>
                         <Route path='/' component={Home} exact></Route>
                         <Route path='/todo' component={NoteBookList}></Route>
-                        <Route path='/edit/:id' component={Edit}></Route>
-                        <Route path='/create' component={CreateNotebook}></Route>
+                        <Route path='/edit/:_id' component={Edit}></Route>
+                        <Route path='/create' component={Edit}></Route>
                     </Switch>
                 </div>
             </Router>

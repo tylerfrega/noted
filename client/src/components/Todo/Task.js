@@ -49,8 +49,8 @@ const Task = ({
         >
             {task.title}
             {showEditButton(showEdit)}
-            {showCompleteButton()}
             {showRemoveButton()}
+            {showCompleteButton()}
         </li>
     )
 }

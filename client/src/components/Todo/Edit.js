@@ -1,28 +1,47 @@
 import React, { useState, useEffect }from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import CreateNotebook from './CreateNotebook'
 import TaskListEdit from './TaskListEdit'
-import { set } from 'mongoose';
+import saveIcon from '../../assets/images/save.png'
 
 const Edit = () => {
-    let { id }  = useParams();
-    const [notebook, setNotebook] = useState([])
+    let { _id }  = useParams();
+    const [title, setTitle] = useState('')
+    const [notes, setNotes] = useState('')
     const [tasks, setTasks] = useState([])
     const [value, setValue] = useState('')
-
-    useEffect(() => { fetchNotebook() }, [id])
+    useEffect(() => { fetchNotebook() }, [_id])
 
     const fetchNotebook = async () => {
-        const result = await axios({
-            method: 'get',
-            url: '/api/getNotebooks',
-        })
-        setNotebook(result.data.data.filter(item => item._id === id)[0])
-        setTasks(result.data.data.filter(item => item._id === id)[0].tasks)
+        if(_id) {
+            const result = await axios({
+                method: 'get',
+                url: '/api/getNotebooks',
+            })
+            const notebook = result.data.data.filter(item => item._id === _id)[0]
+            setTasks(notebook.tasks)
+            setNotes(notebook.notes)
+            setTitle(notebook.title)
+        }
     }
 
-    const handleSubmit = e => {
+    const saveNotebook =  async () => {
+        const url = _id ? '/api/updateNotebook' : '/api/saveNotebook'
+        const notebook = {
+            _id,
+            title,
+            notes,
+            tasks
+        }
+
+        const result = await axios({
+            method: 'post',
+            url: url,
+            data: notebook
+        })
+    }
+
+    const handleTaskSubmit = e => {
         e.preventDefault()
         if (!value) return
 
@@ -46,23 +65,46 @@ const Edit = () => {
         const newTasks = [...tasks]
 
         newTasks[index].completed = !newTasks[index].completed
-        // updateTask(newTasks[index], newTasks[index].id)
         setTasks(newTasks)
     }
+    
 
 
     return (
-        <div>
-            <h1 className="welcome">{notebook.title}</h1>
-            <p className="notes">{notebook.notes}</p>
+        <div className="edit">
+            <div className='title'>
+            <input
+                    type='text'
+                    className='input'
+                    value={title}
+                    placeholder='Title'
+                    onChange={e => setTitle(e.target.value)}
+                />
+            </div>
+
+            {/* <h1 className="welcome">{notebook.title}</h1> */}
+            {/* <p className="notes">{notebook.notes}</p> */}
+            <div  className='notes'>
+            <textarea
+                    value={notes}
+                    placeholder='Notes'
+                    onChange={e => setNotes(e.target.value)}
+                    
+                >
+                </textarea>
+            </div>
+
             <TaskListEdit
                 tasks={tasks}
                 value={value}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleTaskSubmit}
                 removeTask={removeTask}
                 setValue={setValue}
                 completeTask={completeTask}
             />
+            <button onClick={() => saveNotebook()}>
+                <img src={saveIcon} alt={'turds'} />
+            </button>
         </div>
     )
 }

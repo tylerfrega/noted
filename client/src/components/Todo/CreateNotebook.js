@@ -54,7 +54,8 @@ const CreateNotebook = () => {
                 </textarea>
             </form>
             <TaskList />
-            <button onClick={() => handleSubmit()}><img src={saveIcon} alt={'turds'} />
+            <button onClick={() => handleSubmit()}>
+                <img src={saveIcon} alt={'turds'} />
             </button>
         </div>
     )
