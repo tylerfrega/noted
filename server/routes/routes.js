@@ -32,10 +32,11 @@ router.post('/updateNotebook', (req, res) => {
     })
 })
 
-router.delete('/deleteTask', (req, res) => {
+router.delete('/deleteNotebook', (req, res) => {
     const { _id } = req.body
+    console.log(req.body)
 
-    Data.findByIdAndRemove(_id, err => {
+    Notebook.findByIdAndRemove(_id, err => {
         if (err) return res.send(err)
         return res.json({ success: true })
     })

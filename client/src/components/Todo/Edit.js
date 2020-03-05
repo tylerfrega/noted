@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import TaskListEdit from './TaskListEdit'
 import saveIcon from '../../assets/images/save.png'
+import deleteIcon from '../../assets/images/delete.png'
 
 const Edit = () => {
     let { _id }  = useParams();
@@ -38,6 +39,15 @@ const Edit = () => {
             method: 'post',
             url: url,
             data: notebook
+        })
+    }
+
+    const deleteNotebook =  async () => {
+        console.log(_id)
+        const result = await axios({
+            method: 'delete',
+            url: '/api/deleteNotebook',
+            data: {_id}
         })
     }
 
@@ -104,6 +114,9 @@ const Edit = () => {
             />
             <button onClick={() => saveNotebook()}>
                 <img src={saveIcon} alt={'turds'} />
+            </button>
+            <button onClick={() => deleteNotebook()}>
+                <img src={deleteIcon} alt={'turds'} />
             </button>
         </div>
     )
