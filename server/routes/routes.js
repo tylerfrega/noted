@@ -24,7 +24,6 @@ router.post('/saveNotebook', (req, res) => {
 
 router.post('/updateNotebook', (req, res) => {
     const { _id } = req.body
-    console.log(_id)
 
     Notebook.findByIdAndUpdate(_id, req.body, err => {
         if (err) return res.json({ success: false, error: err })
@@ -34,7 +33,6 @@ router.post('/updateNotebook', (req, res) => {
 
 router.delete('/deleteNotebook', (req, res) => {
     const { _id } = req.body
-    console.log(req.body)
 
     Notebook.findByIdAndRemove(_id, err => {
         if (err) return res.send(err)

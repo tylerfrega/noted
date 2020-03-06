@@ -91,9 +91,7 @@ const Edit = () => {
                     onChange={e => setTitle(e.target.value)}
                 />
             </div>
-
-            {/* <h1 className="welcome">{notebook.title}</h1> */}
-            {/* <p className="notes">{notebook.notes}</p> */}
+            
             <div  className='notes'>
             <textarea
                     value={notes}

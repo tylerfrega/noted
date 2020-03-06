@@ -13,7 +13,6 @@ const TaskListEdit = ({
     ) => {
     const [showCompleted, setCompleted] = useState(false)
 
-
     const showCreateTask = () => {
         if (!showCompleted) {
             return  <div className='create-task'>

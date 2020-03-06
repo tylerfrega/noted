@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import NoteBookList from './components/Todo/NotebookList'
 import Home from './components/Home'
 import Edit from './components/Todo/Edit'
-import CreateNotebook from './components/Todo/CreateNotebook'
 import './App.scss'
 
 function App() {

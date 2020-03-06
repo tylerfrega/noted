@@ -20,14 +20,6 @@ const Todo = () => {
         setTasks(result.data.data)
     }
 
-    const updateTask = async (task) => {
-        const result = await axios({
-            method: 'post',
-            url: '/api/updateTask',
-            data: task
-        })
-    }
-
     return (
         <div>
             <div className="task-headers">
